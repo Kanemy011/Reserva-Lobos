@@ -11,8 +11,6 @@ body {
   font-size: 1.8em;
   color: white;
   background-color: white;
-  /* Responsividad para pantallas pequeñas */
-  /* Para pantallas muy pequeñas (teléfonos) */
   /* "Adopt a Wolf 1" ...................................................................*/
   /* Responsividad para pantallas más pequeñas */
   /* Adopt a Wolf 2 ............................................................*/
@@ -86,6 +84,8 @@ body .parallax_wrapper {
   overflow-x: hidden;
   overflow-y: auto;
   perspective: 300px;
+  /* Responsividad para pantallas pequeñas */
+  /* Para pantallas muy pequeñas (teléfonos) */
 }
 body .parallax_wrapper .parallax_group {
   position: relative;
@@ -156,6 +156,33 @@ body .parallax_wrapper .title h2 {
   font-size: 1.2em;
   color: white;
 }
+@media (max-width: 768px) {
+  body .parallax_wrapper body .parallax_wrapper .title h1 {
+    font-size: 1.7em;
+  }
+  body .parallax_wrapper body .parallax_wrapper .title h2 {
+    font-size: 0.9em;
+  }
+  body .parallax_wrapper body .parallax_wrapper .title {
+    bottom: 5vh;
+    right: 2vw;
+    text-align: center;
+    margin: 30px;
+  }
+}
+@media (max-width: 550px) {
+  body .parallax_wrapper .title h1 {
+    font-size: 40px;
+  }
+  body .parallax_wrapper .title h2 {
+    font-size: 25px !important;
+  }
+  body .parallax_wrapper body .parallax_wrapper .title {
+    bottom: 5vh;
+    right: 1vw;
+    text-align: center;
+  }
+}
 body .parallax_wrapper #group-1 {
   z-index: 0;
 }
@@ -193,33 +220,6 @@ body #quiz-container {
   padding: 20px;
   border: 1px solid #ddd;
   background-color: #f9f9f9;
-}
-@media (max-width: 768px) {
-  body body .parallax_wrapper .title h1 {
-    font-size: 1.7em;
-  }
-  body body .parallax_wrapper .title h2 {
-    font-size: 0.9em;
-  }
-  body body .parallax_wrapper .title {
-    bottom: 5vh;
-    right: 2vw;
-    text-align: center;
-    margin: 30px;
-  }
-}
-@media (max-width: 480px) {
-  body body .parallax_wrapper .title h1 {
-    font-size: 1em;
-  }
-  body body .parallax_wrapper .title h2 {
-    font-size: 0.8em;
-  }
-  body body .parallax_wrapper .title {
-    bottom: 5vh;
-    right: 1vw;
-    text-align: center;
-  }
 }
 body #group-1 {
   display: flex;
@@ -271,6 +271,16 @@ body #group-1 .text h2 {
   }
   body #group-1 .text p {
     font-size: clamp(1rem, 1vw + 1rem, 2rem);
+  }
+}
+@media (max-width: 560px) {
+  body #group-1 .text {
+    width: 100%;
+    height: 50%;
+    padding: 10px;
+  }
+  body #group-1 .text p {
+    font-size: 15px;
   }
 }
 body #group-2 {
@@ -348,6 +358,36 @@ body #group-2 .mid_layer ul li {
     margin: 0px 0;
   }
 }
+@media (max-width: 550px) {
+  body #group-2 {
+    height: 100vh;
+  }
+  body #group-2 .text {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    top: 5px;
+  }
+  body #group-2 .text p {
+    font-size: 16px;
+    padding: 10px;
+  }
+  body #group-2 .text h2 {
+    padding: 0;
+    margin: 0;
+  }
+  body #group-2 .mid_layer ul {
+    flex-direction: column;
+    max-width: 100%;
+    height: 50%;
+    padding: 10px;
+    margin-top: 30px;
+  }
+  body #group-2 .mid_layer ul li {
+    font-size: 15px;
+    margin: 0px 0;
+  }
+}
 body #group-3 .mid_layer {
   background-image: url("../Imagenes/wolf-4922973_1920.jpg");
   background-size: cover;
@@ -405,6 +445,33 @@ body .overlay-text button:hover {
     width: 600px !important;
   }
 }
+@media (max-width: 400px) {
+  body .overlay-text {
+    position: relative;
+    text-align: center;
+    font-size: clamp(1rem, 1vw + 2rem, 3rem);
+    margin: 10px;
+    padding: 1em;
+    border-radius: 0.8em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    width: 600px !important;
+  }
+  body .overlay-text button {
+    border-radius: 1.5em;
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #08953b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    text-align: center;
+    letter-spacing: 6px;
+  }
+}
 body #group-4 .top_layer {
   display: flex;
   justify-content: space-between;
@@ -455,36 +522,63 @@ body #group-4 .wolfs-images li span {
   margin-top: 0.5em;
 }
 @media (max-width: 1068px) {
-  body #group-4 {
+  body #group-4 .mid_layer {
+    flex-direction: row-reverse; /* Cambia el orden para poner el mapa al final */
+    align-items: center;
     color: black;
+    justify-content: space-evenly;
   }
   body #group-4 .text-container {
-    position: absolute;
-    top: 20px;
-    width: 100%;
-    padding: 0 20px;
-    font-size: 0.5em;
-  }
-  body #group-4 .wolfs-map {
-    position: absolute;
-    width: 450px;
-    bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  body #group-4 .wolfs-images {
-    justify-content: center;
-  }
-  body #group-4 .wolfs-images li {
-    margin: 0 0.5em;
+    width: 50%;
+    font-size: 15px;
+    padding: 10px;
+    margin-right: 20px;
   }
   body #group-4 .wolfs-images li img {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    box-shadow: 0 4px 8px rgba(22, 22, 22, 0.553);
+    transition: transform 0.3s ease;
+  }
+  body #group-4 .wolfs-map {
+    width: 50vw;
+    inset: 0;
+    margin-right: 20px;
+    position: relative; /* Cambia a 'relative' para un flujo natural en el diseño */
   }
 }
-body .parallax_layer {
-  min-width: 100vw;
+@media (max-width: 400px) {
+  body #group-4 .mid_layer {
+    flex-direction: column-reverse; /* Cambia el orden para poner el mapa al final */
+    align-items: center;
+    color: black;
+    justify-content: space-evenly;
+  }
+  body #group-4 .text-container {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+    margin: 10px;
+  }
+  body #group-4 .wolfs-images li img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    box-shadow: 0 4px 8px rgba(22, 22, 22, 0.553);
+    transition: transform 0.3s ease;
+  }
+  body #group-4 .wolfs-map {
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    min-width: 100%;
+    inset: 0;
+    margin: 0;
+    position: relative; /* Cambia a 'relative' para un flujo natural en el diseño */
+  }
 }
 body .galeria {
   margin-top: 40px;
@@ -659,21 +753,25 @@ body .galeria .ver-mas-btn:hover {
     font-size: clamp(1rem, 1vw + 1rem, 2rem);
   }
 }
-#group-9 {
-  z-index: -2;
-}
-
-#p5Container {
-  position: relative;
-  margin: auto;
-}
-
-/* Media query para pantallas pequeñas */
-@media (max-width: 760px) {
-  #p5Container {
-    width: 50%;
-    height: 50%;
-    padding-bottom: 50%;
+@media (max-width: 450px) {
+  #group-7 .text {
+    margin: 0;
+  }
+  #group-7 .text p {
+    font-size: 17px;
+  }
+  #group-7 .support {
+    border-radius: 2em;
+    font-weight: bold;
+    background-color: #FFA500;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding-left: 3em;
+    padding-right: 3em;
+    width: auto;
+    letter-spacing: 2px;
+    font-size: 16px;
   }
 }
 #outro .text {
@@ -686,15 +784,14 @@ body .galeria .ver-mas-btn:hover {
   width: 100%;
 }
 #outro .text h5 {
-  font-size: clamp(1.8rem, 1vw + 1rem, 1.2rem);
+  font-size: 20px;
 }
 #outro .text ul {
   list-style-type: none;
   margin: 10px;
-  flex-grow: 1;
 }
 #outro .text li {
-  font-size: clamp(1.5rem, 1vw + 1rem, 1rem);
+  font-size: 18px;
 }
 #outro .text img {
   width: 200px;
@@ -703,12 +800,135 @@ body .galeria .ver-mas-btn:hover {
   margin-top: 20px;
 }
 
-@media (max-width: 868px) {
+@media (max-width: 768px) {
   #outro .text {
-    flex-direction: column; /* Cambia el diseño a una columna en pantallas pequeñas */
+    flex-direction: column;
+  }
+  #outro .text .col1,
+  #outro .text .col2 {
+    margin: 5px 0; /* Reduce margen superior e inferior */
+    width: 100%;
+  }
+  #outro .text {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px;
+    width: 100%;
+  }
+  #outro .text h5 {
+    font-size: 15px;
+  }
+  #outro .text ul {
+    list-style-type: none;
   }
   #outro .text li {
-    font-size: 0.7em;
+    font-size: 12px;
+  }
+  #outro .text img {
+    width: 100px;
+  }
+  #outro #social {
+    margin-top: 20px;
+  }
+}
+/* Estilos para el botón de apertura */
+.p5-ad {
+  display: flex;
+  flex-direction: row;
+  color: black;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+#openModalBtn {
+  padding: 0 20px;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 100px;
+  cursor: pointer;
+  margin-left: 10px;
+  color: white;
+  min-height: 60px;
+  min-width: 150px;
+  background-color: #000000;
+}
+
+/* Estilos para el fondo del modal (overlay) */
+.modal {
+  display: none; /* Oculto inicialmente */
+  position: fixed;
+  z-index: 5;
+  inset: 0; /* Alternativa a top, left, right, bottom en 0 */
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Evita scroll dentro del modal */
+}
+
+/* Contenedor del contenido del modal */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  height: 92vh;
+  width: auto;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el botón de cierre ('x') */
+.close {
+  color: #aaa;
+  background-color: #000000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  border-radius: 20px;
+}
+
+.close:hover, .close:focus {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Evitar scroll en el fondo cuando el modal está abierto */
+body.modal-open {
+  overflow: hidden;
+}
+
+#canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ocupa todo el alto del modal */
+  overflow: hidden; /* Evita que se desborde */
+}
+
+canvas {
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+@media (max-width: 500px) {
+  .p5-ad {
+    font-size: 20px;
   }
 }
 .parallax_layer {

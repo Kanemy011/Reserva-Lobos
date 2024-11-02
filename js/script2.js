@@ -194,3 +194,30 @@ document.addEventListener("DOMContentLoaded", function(){
             mainImage.src = img.src;
         });
     });
+
+//MODAL -------------------------------------------------------------
+
+// Obtener elementos del DOM
+const modal = document.getElementById("myModal");
+const openModalBtn = document.getElementById("openModalBtn");
+const closeModalSpan = document.querySelector(".close");
+
+
+// Abrir el modal al hacer clic en el botón
+openModalBtn.onclick = function() {
+    modal.style.display = "flex";
+}
+
+// Cerrar el modal al hacer clic en la 'x'
+closeModalSpan.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Cerrar el modal si el usuario hace clic fuera del contenido del modal
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+
+console.log ("Puedo llegar hasta el final");

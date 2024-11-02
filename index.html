@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    
     <!-- Fuente de Google (la única que descargaremos)-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="p5js2/style2.css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="quiz/quiz.css" type="text/css">
-
     <title>Web Lobos</title>
 </head>
-
 <body>
     <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -50,7 +50,16 @@
                 </div>
             </div>
         </nav>
- <!-- Seccion Video Portada Hero -->
+
+        <!-- Estructura del Modal -->
+        <div id="myModal" class="modal">
+            <!-- Contenido del Modal -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="canvas-container"></div>
+            </div>
+        </div>
+
     <div class="parallax_wrapper">
         <section class="parallax_group intro_screen" id="intro">
             <div class="parallax_layer bg_layer">
@@ -67,7 +76,6 @@
             </div>
         </section>
 
- <!-- Sobre nosotros -->
         <section class="parallax_group" id="group-1">
             <div class="parallax_layer top_layer">
                     <div class = "text">
@@ -76,7 +84,7 @@
                     </div>
             </div>
             <aside class="parallax_layer mid_layer">
-                <img src="./Imagenes/hero2.jpg" alt="Lobo de frente mirando a pantalla"/>
+                <img src="./Imagenes/hero2.jpg" alt="Lobo de frente mirando a pantalla""/>
             </aside>
         </section>
 
@@ -110,7 +118,7 @@
             });
         </script>
 
- <!-- Adopta un Lobo 1 Seccion Informacion-->
+
         <section class="parallax_group" id="group-2">
             <div class="parallax_layer mid_layer">
                 <div class="text">
@@ -126,7 +134,7 @@
             <div class="parallax_layer top_layer">
             </div>
         </section>
- <!-- Adopta un Lobo 2 Seccion adoptar-->
+
         <section class="parallax_group" id="group-3">
             <div class="parallax_layer mid_layer">
             </div>
@@ -140,7 +148,7 @@
         </section>
 
  
-<!-- Sección Nuestros Lobos Informacion de algunos de ellos-->
+<!-- Sección Nuestros Lobos -->
 <section class="parallax_group" id="group-4">
     <div class="parallax_layer top_layer">
         <div class="text-container">
@@ -163,7 +171,7 @@
         </div>
     </div>
     <div class="parallax_layer mid_layer">
-        <aside class="mapa wolfs-map"><img src="./Imagenes/mapa0.png" alt="mapa Yellowstone"></aside>
+        <aside id="mapalobos" class="mapa wolfs-map"><img src="./Imagenes/mapa0.png" alt="mapa Yellowstone"></aside>
     </div>
 </section>
 
@@ -197,13 +205,12 @@
     });
 </script>
 
-
         <!-- <div class="parallax_group" id="group-6">
             <div class="parallax_layer mid_layer">Galeria</div>
             <div class="parallax_layer top_layer">Galeria text</div>
         </div> -->
 
-                 <!-- Sección Galería Intrinsic Web Design, Galeria adaptativa a las imagenes-->
+                 <!-- Sección Galería -->
                  <section class="galeria" id="group-6">
                     <h2>Gallery</h2>
                     <ul>
@@ -224,23 +231,22 @@
                         <li class="hidden-img"><img src="./Imagenes/yellowstone-national-park-6729237_1920.jpg" alt="Imagen lobo caminando"/></li>
                         <li class="hidden-img"><img src="./Imagenes/wolf-3241382_1920.jpg" alt="Imagen lobo gris"/></li>
                     </ul>
-                    <!-- Botón para mostrar más imágenes en pantallas pequeñas-->
+                    <!-- Botón para mostrar más imágenes -->
                     <div class="btn-container">
                         <button class="ver-mas-btn">Ver más</button>
                     </div>
                     
                 </section>
- <!-- Donacion -->
+
         <section class="parallax_group" id="group-7">
             <div class="parallax_layer mid_layer">
                 <img src="./Imagenes/wolf-4496659_1920.jpg" alt="Lobo blanco en bosque oscuro"/>
             </div>
             <div class="parallax_layer top_layer">
                 <div class="text">
-                    <h2>Donation</h2>
-                    <p>Help preserve the wild by donating to protect wolves and their ecosystems. Your support is vital for their survival and conservation.</p>
-                    <button type="button" class="btn btn-primary btn-lg donativo-btn support">Support Us</button>
-                    <a href="#" id="openModal">See ad to make a contribution</a>
+                <h2>Donation</h2>
+                <p>Help preserve the wild by donating to protect wolves and their ecosystems. Your support is vital for their survival and conservation.</p>
+                <button type="button" class="btn btn-primary btn-lg donativo-btn support">Support Us</button>
                 </div>
             </div>
         </section>
@@ -275,7 +281,13 @@
             });
         </script>
 
- <!-- Quiz -->
+    <div class="p5-ad">
+        <h3>Can't afford to make a donation? Don't worry! Check out this awesome ad made with p5.js and you’ll contribute to the cause. You won't spend a dime, and our wolf friends will thank you!</h3>
+        <button id="openModalBtn">Open p5js</button>
+        
+    </div>
+ 
+
         <section class="parallax_group" id="group-8">
             <div class="parallax_layer top_layer">
                 <div class="parallax_layer mid_layer">    
@@ -286,16 +298,9 @@
             </div>
         </section>
 
-        <section class="parallax_group" id="group-9">
-            <div class="parallax_layer mid_layer">
-                <div id="canvas-container"></div> <!-- Contenedor del canvas de p5.js -->
-            </div>
-        </section>
-        
- <!-- Footer con Contacto e Info -->
         <footer class="parallax_group outro_screen" id="outro">
             <div class="text">
-                <div>
+                <div class="col1">
                     <ul>
                         <img src="Imagenes/logoLobo_Blanco.png" alt="logo">
                         <h5>Contact information:</h5>
@@ -314,7 +319,7 @@
                         <li>Wyoming, USA</li>
                     </ul>               
                 </div>
-                <div>
+                <div class="col2">
                     <ul>
                         <h5>Opening hours:</h5>
                         <li>Monday to Friday: 8:00 AM - 6:00 PM</li>
@@ -325,11 +330,12 @@
                 </div>
             </div>
         </footer> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Enlace a la librería boodtrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/addons/p5.sound.min.js"></script>
+    <script src="p5js2/sketch.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script2.js"></script>
     <script src="quiz/quiz.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script> <!-- Enlace a la librería de p5.js -->
-  
-    <script src="p5js/sketch.js"></script>
+    
 </body>
 </html>
