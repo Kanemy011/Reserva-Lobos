@@ -1,0 +1,844 @@
+*{ //Eliminamos todos los márgenes extra que añade css por defecto
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth; //Para que se desplace suavemente al usar los enlaces
+    box-sizing: border-box; //Cambiamos el modelo de sizing para que las medidas también incluyan el padding y el borde.
+    //outline: solid red 1px;
+}
+
+@mixin align-center { //Pequeño mixin para centrar todo el contenido y no tener que repetirnos
+    display: flex; //Flexbox para un mejor diseño responsivo
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+body {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.8em;
+    color: white;
+    background-color: white;
+
+    h2 {
+      font-size: clamp(2rem, 1vw + 1rem, 1rem) !important; //Clamp hace que el tamaño de la letra se adapte de forma progressiva.
+      color: black;
+    }
+
+//  BARRA DE NAVEGACIÓN .............................................................
+//Navbar de bootstrap. Ha hecho falta poner algunas propiedades en !important para adaptarla.
+    
+    .navbar {
+        background-color: transparent !important;
+        position: fixed !important; 
+        top: 0 !important;
+        left: 0 !important;
+        width: 100%;
+        z-index: 1; //Siempre va a estar por delante
+        font-size: 0.7em;
+        padding-right: 20px;
+        font-family: "Outfit";
+
+        //Propiedades de los dos logos. Dependiendo de la posición del scroll se usará uno u otro
+        #logo_blanco{
+            width: 110px;
+            position: absolute;
+            top: 5px;
+            left: 30px;
+            z-index: 5;
+        }
+
+        #logo_negro{
+            width: 110px;
+            position: absolute;
+            top: 5px;
+            left: 30px;
+            z-index: 5;
+            display: none; //El logo negro está desactivado por defecto. Esto cambiará con el javascript.
+        }
+
+        .navbar-collapse {
+            justify-content: flex-end; // Alinear el contenido a la derecha
+        }
+
+        a {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-decoration: none;
+        }
+
+        .nav-item {
+            margin-right: 10px;
+            padding: 5px 10px;
+        }
+
+        .nav-item:hover {
+            outline: 1px solid white; //Se marca un rectángulo al pasar por encima.
+            border-radius: 5px;
+        }
+
+        .navbar-toggler {
+            background-color: white;
+        }
+    }
+
+    .navbar.scrolled { //Propiedades de la barra cuando hacemos scroll.
+        background-color: white !important;
+        a {
+            color: black;
+            text-decoration: none;
+            text-shadow: none;
+        }
+
+        .nav-item:hover {
+            outline: 1px solid black;
+            border-radius: 5px;
+        }
+    }
+
+//NORMAS DEL WRAPPER ....................................................................
+
+    .parallax_wrapper { //Wrapper que incluye todas las capas con efecto parallax
+        height: 100vh; //Tamaño del espacio donde irá el parallax
+        overflow-x: hidden;
+        overflow-y: auto; //Esto hace aparecer una barra de desplazamiento vertical en caso de que el contenido desborde el eje y
+        perspective: 300px; //Significa que el punto de vista está a 300 píxeles de distancia del plano de proyección. Cuanto menor sea el valor, más pronunciado será el efecto 3D.
+
+        .parallax_group {
+            position: relative; //Establece un contexto para que el position absolute de las layers pueda ejecutarse.
+            height: 100vh;
+            transform-style: preserve-3d; //Algunos navegadores se cargan el efecto 3d y "aplanan" la web. Esto lo evita.
+
+            .parallax_layer {
+                position: absolute; //Para que las capas se superpongan
+                inset: 0; //es una forma abreviada de establecer las propiedades top, right, bottom y left a 0 al mismo tiempo
+                @include align-center;
+            }
+
+            .bg_layer {
+                // scale calculation: 1 + ((Z transform value * -1) / perspective))
+                transform: translateZ(-300px) scale(2);
+            } //movemos la capa lejos y le duplicamos el tamaño
+
+            .mid_layer {
+                transform: translateZ(0); //Esto no hace nada
+            }
+
+            .top_layer {
+                transform: translateZ(100px) scale(0.67);
+            } //Acercamos la capa y la hacemos mas pequeña
+        }
+
+        .outro_screen {  //Algunas cosas del footer.
+            height: 100vh;
+            background-color: rgb(13, 11, 11);
+            @include align-center;
+        }
+
+// HERO .........................................................................
+
+        #intro {
+            z-index: -1; //Va estar siempre por debajo del resto de contenido
+        }
+
+        #intro > .bg_layer { //selecciona todos los elementos con la clase base_layer que son hijos directos del elemento con el ID group-1.
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: black;
+
+            .video-background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Asegura que el video cubra todo el área sin deformarse */
+                z-index: 1;
+                pointer-events: none; /* Evita que se pueda interactuar con el video (como clics) */
+              }
+        }
+
+        .title {
+            position: absolute;
+            bottom: 10vh;
+            right: 10vw;
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-family: "Outfit";
+            color: white;
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+                color: white;
+            }
+        }
+
+// OTRAS COSAS DEL BODY ............................................
+        #group-1 {
+            z-index: 0;
+        }
+
+        #group-1 > .mid_layer { //selecciona todos los elementos con la clase base_layer que son hijos directos del elemento con el ID group-1.
+            background-color: white;
+        }
+
+        #group-1 > .top_layer { //selecciona todos los elementos con la clase base_layer que son hijos directos del elemento con el ID group-1.
+            background-color: transparent;
+        }
+
+        #group-2 > .mid_layer { //idem los otros dos
+            background-color: rgb(205, 178, 141);
+        }
+
+        #group-3 > .mid_layer {
+            background-color: white;
+        }
+
+        #group-4 > .mid_layer {
+            background-color: white;
+        }
+
+        #group-5 > .mid_layer {
+            background-color: rosybrown;
+        }
+
+        #group-6 > .mid_layer {
+            background-color: peru;
+        }
+
+        #group-7 > .mid_layer {
+            background-color: rgb(137, 170, 126);
+        }
+
+        #group-8 > .mid_layer {
+            background-color: turquoise;
+        }
+ 
+    }
+
+    #quiz-container { //El contenedor donde irán las páginas del quiz.
+        width: 90%;
+        height: 80vh;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+    }
+
+  /* Responsividad para pantallas pequeñas */
+  @media (max-width: 768px) {
+    body .parallax_wrapper .title h1 {
+      font-size: 1.7em;
+    }
+  
+    body .parallax_wrapper .title h2 {
+      font-size: 0.9em;
+    }
+  
+    body .parallax_wrapper .title {
+      bottom: 5vh;
+      right: 2vw;
+      text-align: center;
+      margin: 30px;
+    }
+  }
+  
+  /* Para pantallas muy pequeñas (teléfonos) */
+  @media (max-width: 480px) {
+    body .parallax_wrapper .title h1 {
+      font-size: 1em;
+    }
+  
+    body .parallax_wrapper .title h2 {
+      font-size: 0.8em;
+    }
+  
+    body .parallax_wrapper .title {
+      bottom: 5vh;
+      right: 1vw;
+      text-align: center;
+    }
+  }
+
+
+//ABOUT US: .................................................................................
+#group-1 {
+    display: flex; 
+    flex-direction: row;
+    position: relative; 
+    img {
+        width: 50vw;
+        height: 100vh;
+        position: absolute;
+        right: 0;
+        top: 0;
+        object-fit: cover;
+    }
+
+    .text {
+        width: 50%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        flex-direction:column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 50px;
+        color: black;
+
+      h2 {
+        font-size: clamp(2.5rem, 1vw + 1rem, 2rem);
+      }
+    }
+}
+
+@media (max-width: 1268px) {
+  #group-1 {
+  display: flex;
+  flex-wrap: wrap; //permite que los elementos secundarios ("hijos") se distribuyan en múltiples líneas en lugar de mantenerse en una sola línea. 
+  flex-direction: column;
+
+  img{
+  width: 100%;
+  height: 50%;
+  position: relative;
+  inset: 0;
+  align-self: flex-end;
+  }
+
+  .text {
+    width: 100%;
+    height: 50%;
+    p {
+      font-size: clamp(1rem, 1vw + 1rem, 2rem);
+    }
+
+  }
+
+  }
+}
+
+
+/* "Adopt a Wolf 1" ...................................................................*/
+
+#group-2 {
+    height: 60vh;
+}
+
+#group-2 .mid_layer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;       
+    justify-content: center;
+    text-align: center; 
+    width: 100%;
+    padding: 0;                
+    margin: 0;                
+    box-sizing: border-box;
+    text-align: center;        
+    color: black; 
+  }
+  
+  #group-2 .mid_layer h2 {
+    margin: 0;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-size: clamp(2.5rem, 1vw + 1rem, 2rem);
+  }
+  
+  #group-2 .mid_layer p {
+    margin-bottom: 100px;
+    padding: 0 50px;
+    font-size: clamp(1rem, 1vw + 1rem, 1.5rem);
+  }
+  
+  #group-2 .mid_layer ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%; 
+    height: 20%;
+    background-color:#0e0e0e84;
+    padding: 0 20px;
+    padding-right: 30px;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+  }
+  
+  #group-2 .mid_layer ul li {
+    color: rgb(255, 255, 255);
+    font-size: clamp(0.5rem, 1rem + 0.1vw, 0.9rem);
+    padding: 10px;
+  }
+  
+@media (max-width: 1068px){
+  #group-2 .mid_layer p {
+    font-size: clamp(1rem, 1vw + 1rem, 1.3rem);
+  }
+}
+
+  /* Responsividad para pantallas más pequeñas */
+  @media (max-width: 768px) {
+    #group-2 {
+      height: 80vh;
+    }
+
+    #group-2 .text{
+      position: absolute;
+      top: 5px;
+    }
+
+      #group-2 .mid_layer p {
+        font-size: 0.65em;
+      }
+
+    #group-2 .mid_layer ul {
+      flex-direction: column;
+      max-width: 100%;
+      height: 40%;
+      padding: 10px; 
+      margin-top: 30px;
+
+    }
+  
+    #group-2 .mid_layer ul li {
+      font-size: 0.6em;
+      margin: 0px 0;
+    }
+  }
+  
+  /* Adopt a Wolf 2 ............................................................*/
+  
+  #group-3 {
+    .mid_layer {
+        background-image: url('../Imagenes/wolf-4922973_1920.jpg'); 
+        background-size: cover; 
+        background-position: center;
+      }
+  }
+  
+  /* Texto superpuesto (de bootstrap)*/ 
+  .overlay-text {
+    position: absolute; 
+    left: 0; 
+    bottom: 0;
+    text-align: center; 
+    font-size: 2em; 
+    margin: 2em;
+    padding: 1em;
+    border-radius: 0.8em;; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: space-evenly;
+    background-color:rgba(0, 0, 0, 0.5) !important; 
+    width: 600px !important;
+  }
+  
+  .overlay-text h2 {
+    color: white;
+  }
+  
+  .overlay-text p {
+    font-size: 0.55em !important;
+  }
+  
+  .overlay-text button {
+    border-radius: 1.5em;
+    font-weight: bold;
+    font-size: 2rem;
+    background-color: #08953b; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    width: 80%; 
+    text-align: center;
+    letter-spacing: 6px;
+  }
+
+  .overlay-text button:hover {
+    background-color: #116c32; 
+  }
+
+  @media(max-width: 868px){
+    .overlay-text {
+      position: relative; 
+      text-align: center; 
+      font-size: clamp(1rem, 1vw + 2rem, 3rem);
+      margin: 2em;
+      padding: 1em;
+      border-radius: 0.8em;; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center;
+      background-color:rgba(0, 0, 0, 0.5) !important; 
+      width: 600px !important;
+    }
+  }
+  
+  /*--- Our Wolves ------------------------------------------------------------*/
+  #group-4 .top_layer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    color: black;
+  }
+  
+  #group-4 .text-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  
+  #group-4 .wolfs-map {
+    width: 40%;
+    height: auto;
+    right: 100px;
+    position: absolute;
+  }
+  
+  #group-4 .wolfs-map img {
+    width: 100%;
+    height: auto;
+  }
+  
+  #group-4 .wolfs-images {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  #group-4 .wolfs-images li {
+    margin: 0 1em;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  #group-4 .wolfs-images li img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(22, 22, 22, 0.553);
+    transition: transform 0.3s ease; //Transforma las imágenes de forma suave
+  }
+  
+  #group-4 .wolfs-images li span {
+    display: block;
+    margin-top: 0.5em;
+  }
+
+  @media (max-width: 1068px) {
+    #group-4 {
+        color: black;
+    }
+  
+    #group-4 .text-container{
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      padding: 0 20px;
+      font-size: 0.5em;
+    }
+    #group-4 .wolfs-map {
+        position: absolute;
+        width: 450px;
+        bottom: 100px;
+        left: 50%; 
+        transform: translateX(-50%); //Mueve el mapa en el centro del eje horizontal.
+    }
+  
+    #group-4 .wolfs-images {
+        justify-content: center;
+    }
+  
+    #group-4 .wolfs-images li {
+        margin: 0 0.5em;
+    }
+  
+    #group-4 .wolfs-images li img {
+        width: 80px;
+        height: 80px;
+    }
+  }
+  
+  .parallax_layer {
+      min-width: 100vw;
+  }
+
+  /* Galería (CON INTRINSIC DESIGN) ...................................................................*/
+
+  .galeria {
+    margin-top: 40px;
+    
+    h2{
+      text-align: center;
+      margin: 30px;
+    }
+
+    ul {
+    columns: 4;
+    column-gap: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    padding: 0; 
+    }
+  
+    li {
+    font-size: 0.7em;
+    list-style-type: none;
+    break-inside: avoid;
+     }
+  
+    img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    margin-top: 0;
+    margin-bottom: 20px;
+    box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
+    }
+  
+    .btn-container { // Contenedor para alinear el botón al medio. Ocupa todo el ancho de la pantalla.
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    }
+    
+    .ver-mas-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .ver-mas-btn:hover {
+      background-color: #0f5aa9;
+    }
+  
+   
+  /* Media queries para pantallas medianas (entre 768px y 1024px) */
+        @media (max-width: 1024px) {
+        ul {
+        columns: 2;
+        column-gap: 0.5em;
+        margin-left: 0.3em;
+        margin-right: 0.3em;
+        }
+  
+        img {
+        margin-bottom: 15px;
+        width: calc(100% - 0.5em);
+        }
+        }
+  
+  
+  /* Para pantallas pequeñas (menores de 768px) */
+     @media (max-width: 768px) {
+    ul {
+      columns: 2;
+      column-gap: 0.3em;
+      margin-left: 0.2em;
+      margin-right: 0.2em;
+    }
+  
+    img {
+      margin-bottom: 10px;
+      width: calc(100% - 0.3em);
+    }
+    .hidden-img { //Si el tamaño es demasiado estrecho la mayoría de imágenes no aparecen. 
+      display: none;
+    }
+    }
+    }
+  
+    @media (max-width: 480px) {
+        ul {
+        columns: 2;
+        column-gap: 0.1em;
+        margin-left: 0.3em;
+        margin-right: 0.2em;
+        }
+  
+        img {
+        width: calc(100% - 0.2em);
+        margin-bottom: 8px;
+        }
+    }
+  }
+
+
+// DONATIVO: .......................................................................................
+
+#group-7 {
+  flex-direction: row;
+  img {
+      width: 60vw;
+      height: 100vh;
+      position: absolute;
+      left: 0;
+      top: 0;
+      object-fit: cover;
+  }
+
+  h2 {
+  font-size: 1.4em;
+  margin-bottom: 0.5em;
+  font-family: "Outfit";
+  margin-top: 0.8em;
+  margin-bottom: 0.2em;
+  }
+
+  p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    padding-bottom: 1em;
+  }
+
+    .support {
+    border-radius: 2em; 
+    font-weight: bold;
+    background-color: #FFA500; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    padding-left: 3em;
+    padding-right: 3em;
+    width: auto; 
+    letter-spacing: 2px;
+    }
+
+  .text {
+      width: 40%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      display: flex;
+      flex-direction:column;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 50px;
+      color: black;
+  }
+}
+
+
+/* Responsividad para pantallas más pequeñas */
+@media (max-width: 1368px){
+  #group-7 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  
+    img{
+    width: 100%;
+    height: 50%;
+    position: relative;
+    inset: 0;
+    align-self: flex-end;
+    }
+  
+    .text {
+      width: 100%;
+      height: 50%;
+      p {
+        font-size: clamp(1rem, 1vw + 1rem, 2rem);
+      }
+  
+    }
+  
+    }
+}
+
+#group-9  {
+  z-index: -2; 
+}
+
+#p5Container {
+    position: relative; 
+    margin: auto;            
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 760px) {
+  #p5Container {
+      width: 50%;            
+      height: 50%;            
+      padding-bottom: 50%;   
+  }
+}
+
+//FOOTER: ........................................................
+
+#outro {
+  
+  .text {
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      margin: 20px;
+      width: 100%;
+      h5{
+        font-size: clamp(1.8rem, 1vw + 1rem, 1.2rem);
+      }
+      ul {
+          list-style-type: none;
+          margin: 10px;
+          flex-grow: 1;
+      }
+  
+      li {
+        font-size: clamp(1.5rem, 1vw + 1rem, 1rem);
+      }
+      img {
+          width: 200px;
+      }
+  }
+
+  #social{
+      margin-top: 20px;
+  }
+}
+
+@media (max-width: 868px) {
+  #outro .text {
+      flex-direction: column; /* Cambia el diseño a una columna en pantallas pequeñas */
+      li {
+        font-size: 0.7em;
+      }
+  }
+}
+
+    //Extra: ............................................................................
+    .parallax_layer {
+    min-width: 100vw; // Aseguramos que ocupe todo el ancho del viewport (para problemas de visualización en Chrome que no ocurren en otros navegadores)
+    }

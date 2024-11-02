@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- Fuente de Google (la única que descargaremos)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="quiz/quiz.css" type="text/css">
+
+    <title>Web Lobos</title>
+</head>
+
+<body>
+    <!-- Barra de navegación -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <a href="#intro">
+                        <img src="Imagenes/logoLobo_Blanco.png" id="logo_blanco" alt="logo">
+                        <img src="Imagenes/logoLobo.png" id="logo_negro" alt="logo">
+                    </a>
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="#group-1">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#group-3">Adopt a wolf</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#group-4">Our wolves</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#group-6">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#group-7">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#group-8">Quiz</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+ <!-- Seccion Video Portada Hero -->
+    <div class="parallax_wrapper">
+        <section class="parallax_group intro_screen" id="intro">
+            <div class="parallax_layer bg_layer">
+                <video class="video-background" autoplay loop muted playsinline>
+                    <source src="Imagenes/herovideo2.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                  </video>
+            </div>
+            <div class="parallax_layer mid_layer">
+                <div class="title" id="title">
+                    <h1>Protecting our wild heritage</h1>
+                    <h2>Support wolf conservation</h2>
+                </div>
+            </div>
+        </section>
+
+ <!-- Sobre nosotros -->
+        <section class="parallax_group" id="group-1">
+            <div class="parallax_layer top_layer">
+                    <div class = "text">
+                        <h2>About Us</h2>
+                        <p>Wolf Wild World is a nature preserve dedicated to the protection of Yellowstone's wolves. Here, wolves live freely in their natural environment, maintaining the balance of the ecosystem. Visitors can observe them up close and learn about their behavior. Join our mission to conserve their habitat and preserve their future.</p>
+                    </div>
+            </div>
+            <aside class="parallax_layer mid_layer">
+                <img src="./Imagenes/hero2.jpg" alt="Lobo de frente mirando a pantalla"/>
+            </aside>
+        </section>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const topLayer = document.querySelector('#group-1 .top_layer');
+                const midLayer = document.querySelector('#group-1 .mid_layer');
+                const text = document.querySelector('#group-1 .text');
+        
+                // Función para ajustar color y mover el elemento
+                function ajustarPosicion() {
+                    if (window.innerWidth <= 1268) {
+        
+                        // Mover el elemento .text a .mid_layer si no está ya en él
+                        if (text.parentNode !== midLayer) {
+                            midLayer.appendChild(text);
+                        }
+                    } else {
+        
+                        // Volver a colocar el elemento .text en .top_layer si no está ya en él
+                        if (text.parentNode !== topLayer) {
+                            topLayer.appendChild(text);
+                        }
+                    }
+                }
+        
+                // Llamada inicial al cargar la página
+                ajustarPosicion();
+        
+                window.addEventListener('resize', ajustarPosicion);
+            });
+        </script>
+
+ <!-- Adopta un Lobo 1 Seccion Informacion-->
+        <section class="parallax_group" id="group-2">
+            <div class="parallax_layer mid_layer">
+                <div class="text">
+                    <h2>Adopt a Wolf</h2>
+                    <p>By symbolically adopting a wolf, you directly contribute to the care and maintenance of wolves in Wolf Wild World. Your donation supports food programs, protection and preservation of its natural habitat. Plus, you'll receive updates on the wolves you help protect. Join our cause and make a difference in the lives of these incredible animals!</p>
+                </div>
+                <ul>
+                    <li>You can choose between different levels of adoption, each with exclusive benefits such as photos and special reports.</li>
+                    <li>You will receive a welcome kit with information about your adopted wolf and how you impact its life.</li>
+                    <li>Every adoption helps fund medical care and food for the wolves at Wolf Wild World.</li>
+                </ul>
+            </div>
+            <div class="parallax_layer top_layer">
+            </div>
+        </section>
+ <!-- Adopta un Lobo 2 Seccion adoptar-->
+        <section class="parallax_group" id="group-3">
+            <div class="parallax_layer mid_layer">
+            </div>
+            <div class="parallax_layer top_layer">
+                    <div class="overlay-text">
+                        <h2>Adopt a Wolf</h2>
+                        <p>Make a difference in the lives of these incredible creatures and adopt today!</p>
+                        <button type="button" class="btn btn-primary btn-lg">Adopt</button>
+                    </div>
+            </div>
+        </section>
+
+ 
+<!-- Sección Nuestros Lobos Informacion de algunos de ellos-->
+<section class="parallax_group" id="group-4">
+    <div class="parallax_layer top_layer">
+        <div class="text-container">
+            <h2>Our Wolves</h2>
+            <p>Meet the wolves that call Wolf Wild World their home. Each wolf plays a vital role in our ecosystem, and we work tirelessly to ensure their protection and conservation.</p>
+            <ul class="wolfs-images">
+                <li>
+                    <img src="./Imagenes/wolf-725380_1920.jpg" alt="Lobo Marron">
+                    <span>Wind</span>
+                </li>
+                <li>
+                    <img src="./Imagenes/wolf-3241382_1920.jpg" alt="Lobo Gris">
+                    <span>Jack</span>
+                </li>
+                <li>
+                    <img src="./Imagenes/wolf-4483675_1920.jpg" alt="Lobo Blanco">
+                    <span>Pearl</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="parallax_layer mid_layer">
+        <aside class="mapa wolfs-map"><img src="./Imagenes/mapa0.png" alt="mapa Yellowstone"></aside>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const topLayer2 = document.querySelector('#group-4 .top_layer');
+        const midLayer2 = document.querySelector('#group-4 .mid_layer');
+        const text2 = document.querySelector('#group-4 .text-container');
+
+        // Función para ajustar color y mover el elemento
+        function ajustarPosicion2() {
+            if (window.innerWidth <= 1068) {
+
+                // Mover el elemento .text a .mid_layer si no está ya en él
+                if (text2.parentNode !== midLayer2) {
+                    midLayer2.appendChild(text2);
+                }
+            } else {
+
+                // Volver a colocar el elemento .text en .top_layer si no está ya en él
+                if (text2.parentNode !== topLayer2) {
+                    topLayer2.appendChild(text2);
+                }
+            }
+        }
+
+        // Llamada inicial al cargar la página
+        ajustarPosicion2();
+
+        window.addEventListener('resize', ajustarPosicion2);
+    });
+</script>
+
+
+        <!-- <div class="parallax_group" id="group-6">
+            <div class="parallax_layer mid_layer">Galeria</div>
+            <div class="parallax_layer top_layer">Galeria text</div>
+        </div> -->
+
+                 <!-- Sección Galería Intrinsic Web Design, Galeria adaptativa a las imagenes-->
+                 <section class="galeria" id="group-6">
+                    <h2>Gallery</h2>
+                    <ul>
+                        <li><img src="./Imagenes/yellowstone-canyon-falls-5065672_1920.jpg" alt="Imagen barranco" /></li>
+                        <li><img src="./Imagenes/animal-4334874_1920.jpg" alt="Imagen lobos aullando" /></li>
+                        <li><img src="./Imagenes/wolf-1992716_1920.jpg" alt="Imagen lobo blanco perfil" /></li>
+                        <li><img src="./Imagenes/arctic-wolf-4707294_1920.jpg" alt="Imagen Lobo gris" /></li>
+                        <li class="hidden-img"><img src="./Imagenes/animals-4686720_1920.jpg" alt="Imagen lobo blanco perfil iluminado"/></li>
+                        <li class="hidden-img"><img src="./Imagenes/hero2.jpg" alt="Imagen lobo mirando a camara"/></li>
+                        <li class="hidden-img"><img src="./Imagenes/mountains-6782449_1920.jpg" alt="Imagen lobo blanco aullando"/></li>
+                        <li class="hidden-img"><img src="./Imagenes/dog-4033132_1920.jpg" alt="magen lobo gris sentado relajado"/></li>
+                        <li class="hidden-img"><img src="./Imagenes/grey-wolf-7589920_1920.jpg" alt="Imagen lobo gris aullando"/></li>
+                        <li class="hidden-img"><img src="./Imagenes/grey-wolf-7618053_1920.jpg" alt="Imagen llanuras y bosque en montañas"/></li>
+                        <li class="hidden-img"><img src="./Imagenes/mountain-7274247_1920.jpg" alt="Imagen montañas"/></li>
+                        <li class="hidden-img"><img src="./Imagenes/wolf-3151876_1920.jpg" alt="Imagen yellowstone dia"/></li>
+                        <li class="hidden-img"><img src="./Imagenes/wolf-5360340_1920.jpg" alt="Imagen manada lobos gris"/></li>
+                        <li class="hidden-img"><img src="./Imagenes/wolf-1336229_1920.jpg" alt="Imagen lobo negro"/></li>
+                        <li class="hidden-img"><img src="./Imagenes/yellowstone-national-park-6729237_1920.jpg" alt="Imagen lobo caminando"/></li>
+                        <li class="hidden-img"><img src="./Imagenes/wolf-3241382_1920.jpg" alt="Imagen lobo gris"/></li>
+                    </ul>
+                    <!-- Botón para mostrar más imágenes en pantallas pequeñas-->
+                    <div class="btn-container">
+                        <button class="ver-mas-btn">Ver más</button>
+                    </div>
+                    
+                </section>
+ <!-- Donacion -->
+        <section class="parallax_group" id="group-7">
+            <div class="parallax_layer mid_layer">
+                <img src="./Imagenes/wolf-4496659_1920.jpg" alt="Lobo blanco en bosque oscuro"/>
+            </div>
+            <div class="parallax_layer top_layer">
+                <div class="text">
+                    <h2>Donation</h2>
+                    <p>Help preserve the wild by donating to protect wolves and their ecosystems. Your support is vital for their survival and conservation.</p>
+                    <button type="button" class="btn btn-primary btn-lg donativo-btn support">Support Us</button>
+                    <a href="#" id="openModal">See ad to make a contribution</a>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const topLayer3 = document.querySelector('#group-7 .top_layer');
+                const midLayer3 = document.querySelector('#group-7 .mid_layer');
+                const text3 = document.querySelector('#group-7 .text');
+        
+                // Función para ajustar color y mover el elemento
+                function ajustarPosicion3() {
+                    if (window.innerWidth <= 1368) {
+        
+                        // Mover el elemento .text a .mid_layer si no está ya en él
+                        if (text3.parentNode !== midLayer3) {
+                            midLayer3.appendChild(text3);
+                        }
+                    } else {
+        
+                        // Volver a colocar el elemento .text en .top_layer si no está ya en él
+                        if (text3.parentNode !== topLayer3) {
+                            topLayer3.appendChild(text3);
+                        }
+                    }
+                }
+        
+                // Llamada inicial al cargar la página
+                ajustarPosicion3();
+        
+                window.addEventListener('resize', ajustarPosicion3);
+            });
+        </script>
+
+ <!-- Quiz -->
+        <section class="parallax_group" id="group-8">
+            <div class="parallax_layer top_layer">
+                <div class="parallax_layer mid_layer">    
+                    <div id="quiz-container">
+                    <!-- Aquí se cargará el contenido del quiz dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="parallax_group" id="group-9">
+            <div class="parallax_layer mid_layer">
+                <div id="canvas-container"></div> <!-- Contenedor del canvas de p5.js -->
+            </div>
+        </section>
+        
+ <!-- Footer con Contacto e Info -->
+        <footer class="parallax_group outro_screen" id="outro">
+            <div class="text">
+                <div>
+                    <ul>
+                        <img src="Imagenes/logoLobo_Blanco.png" alt="logo">
+                        <h5>Contact information:</h5>
+                        <li><strong>Adress</strong></li>
+                        <li>Wolf Wild World</li>
+                        <li>123 Wolf Trail, Yellowstone National Park</li>
+                        <li>Wyoming, USA</li>
+                    </ul>
+                
+                    <ul>
+                        <li><strong>Email:</strong></li>
+                        <li>info@yellowstonewolves.org</li>
+                    </ul>
+                    <ul>
+                        <li><strong>Phone Number:</strong></li>
+                        <li>Wyoming, USA</li>
+                    </ul>               
+                </div>
+                <div>
+                    <ul>
+                        <h5>Opening hours:</h5>
+                        <li>Monday to Friday: 8:00 AM - 6:00 PM</li>
+                        <li>Saturday or Sunday: 9:00 AM - 5:00 PM</li>
+                        <li>(Closed on national holidays)</li>
+                        <img src="Imagenes/socialmedia.png" id = "social">
+                    </ul>
+                </div>
+            </div>
+        </footer> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Enlace a la librería boodtrap -->
+    <script src="js/script2.js"></script>
+    <script src="quiz/quiz.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script> <!-- Enlace a la librería de p5.js -->
+  
+    <script src="p5js/sketch.js"></script>
+</body>
+</html>

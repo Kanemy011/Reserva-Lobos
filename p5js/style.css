@@ -1,0 +1,54 @@
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+h1 {
+    color: red;
+}
+
+/* Estilo para ocultar el modal por defecto */
+.modal {
+  display: none; /* Modal oculto por defecto */
+  position: fixed;
+  z-index: 1; /* Aparece encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+}
+
+/* Estilo del contenido del modal */
+.modal-content {
+  background-color: white;
+  margin: 15% auto; /* Centrar verticalmente */
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%; /* Ancho del contenido del modal */
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Estilo para el botón de cerrar (la 'x') */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover, .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+canvas {
+    display: block;
+    margin: 0px;
+    border: 2px solid blue;
+    transform: scale (0.5);
+  }
+  

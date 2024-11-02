@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="quiz/quiz.css" type="text/css" />
+    <script src="quiz/quiz.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Question 1</h1>
+      <p>
+        Wolves can travel up to 50 kilometers in a single day in search of food.
+      </p>
+    </header>
+    <div class="question">
+      <h3>Is this statement true or false?</h3>
+
+      <!-- ADD YOUR OWN IMAGE HERE-->
+      <img
+        src="quiz/media/q1.jpeg"
+        width="300"
+      />
+      
+      <!-- Each Yes or No Answer should either increment or decrement the points from the quiz. Change the function based on the answer. -->
+      <button onclick="incToo(); avanzar();" class="yes-button" alt="true">👍</button>
+      <button onclick="decToo(); avanzar();" class="no-button" alt = "false">👎</button>
+    </div>
+   
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div
+      class="glitchButton"
+      style="position: fixed; top: 20px; right: 20px"
+    ></div>
+    <script src="https://button.glitch.me/button.js"></script>
+  </body>
+</html>
